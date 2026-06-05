@@ -1,0 +1,66 @@
+# ================================================================
+#  GitHub Actions: Auto-update Profile README
+#  File location: .github/workflows/update-profile.yml
+#  Repo: github.com/alfredsn/alfredsn  (same repo as README.md)
+# ================================================================
+
+name: Update Profile README
+
+on:
+  schedule:
+    # Runs every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  # Allows manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Step 1: Checkout the profile repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Update Recent Activity section
+      - name: Update recent GitHub activity
+        uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          COMMIT_MSG: 'chore: update recent activity'
+          MAX_LINES: 8
+
+      # Step 3: Generate 3D Contribution Graph
+      - name: Generate 3D contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: alfredsn
+          # Outputs to: profile-3d-contrib/profile-night-rainbow.svg
+          # Change SETTING_JSON to customize the style if needed
+
+      # Step 4: Generate Contribution Snake animation
+      - name: Generate contribution snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: alfredsn
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake-light.svg?palette=github-light
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 5: Commit and push all generated files
+      - name: Commit and push updates
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          # Only commit if there are actual changes
+          git diff --quiet && git diff --staged --quiet \
+            || git commit -m "chore: auto-update profile widgets [skip ci]"
+          git push
