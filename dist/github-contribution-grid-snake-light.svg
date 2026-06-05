@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 200" width="100%">
+  <defs>
+    <linearGradient id="snake-light-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#718096"/>
+      <stop offset="50%" style="stop-color:#2d3748"/>
+      <stop offset="100%" style="stop-color:#718096"/>
+    </linearGradient>
+  </defs>
+  <rect width="850" height="200" fill="#ffffff"/>
+  <text x="425" y="100" font-family="JetBrains Mono, monospace" font-size="18" fill="#2d3748" text-anchor="middle">
+    Snake Animation (Light Mode) Generating...
+  </text>
+  <text x="425" y="130" font-family="JetBrains Mono, monospace" font-size="14" fill="#718096" text-anchor="middle">
+    Run GitHub Actions to generate the light contribution snake
+  </text>
+  <path d="M 200 160 Q 425 140 650 160" stroke="url(#snake-light-grad)" stroke-width="3" fill="none" stroke-dasharray="10,5">
+    <animate attributeName="stroke-dashoffset" values="0;-15" dur="1s" repeatCount="indefinite"/>
+  </path>
+</svg>
