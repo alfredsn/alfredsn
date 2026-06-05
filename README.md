@@ -5,11 +5,12 @@
 
 <div align="center">
 
-<!-- CUSTOM SVG BANNER — taruh header-banner.svg di repo kamu -->
-<!-- Option A: pakai file SVG dari repo ini -->
-<img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/header-banner.svg" width="100%" alt="Alfred SN — Software Engineer" />
+<img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/header-banner.svg"
+     width="100%"
+     alt="Alfred SN — Software Engineer"
+     onerror="this.style.display='none'" />
 
-<!-- Option B (fallback): typing animation saja -->
+<!-- TYPING ANIMATION -->
 <img src="https://readme-typing-svg.demolab.com?font=Space+Mono&weight=700&size=20&duration=2800&pause=600&color=FF7043&center=true&vCenter=true&width=580&lines=%24+whoami+%E2%86%92+Alfred+SN;%24+cat+role.txt+%E2%86%92+Software+Engineer;%24+ls+interests%2F+%E2%86%92+Open+Source%2C+AI%2C+Mobile;%24+echo+%24STATUS+%E2%86%92+Building+cool+stuff;%24+ping+coffee+-t+%E2%86%92+always+online" alt="typing" />
 
 <br/>
@@ -57,12 +58,10 @@
 ### `$ cat about.md`
 
 Software Engineer obsessed with **clean architecture** and **great DX**.  
-Building at the intersection of web, mobile, and AI — 7+ years turning caffeine into production-grade code.
+Building at the intersection of web, mobile, and AI - 2 years turning caffeine into production-grade code.
 
 - 🔭 Working on something at **alfredsn.com**
-- 🌱 Currently exploring **LLM tooling** & **Rust**
 - 🤝 Open to collaboration on **open source projects**
-- ⚡ Fun fact: I debug faster with music on
 
 </td>
 <td width="45%">
@@ -86,27 +85,27 @@ coffee.service  ████  CRITICAL
 
 ---
 
-<!-- ================================================================ -->
-<!--  3D CONTRIBUTION GRAPH                                           -->
-<!-- ================================================================ -->
-
 ### `$ git log --graph --all --decorate`
 
 <div align="center">
-  <img src="https://github.com/alfredsn/alfredsn/blob/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contrib" width="100%" />
+  <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/profile-3d-contrib/profile-night-rainbow.svg"
+       alt="3D Contribution Graph"
+       width="100%" />
 </div>
 
 ---
 
-<!-- ================================================================ -->
-<!--  CONTRIBUTION SNAKE                                              -->
-<!-- ================================================================ -->
+### `$ git log --oneline --snake`
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/alfredsn/alfredsn/blob/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/alfredsn/alfredsn/blob/output/github-contribution-grid-snake.svg" />
-    <img alt="contribution snake" src="https://github.com/alfredsn/alfredsn/blob/output/github-contribution-grid-snake.svg" width="100%" />
+    <source media="(prefers-color-scheme: dark)"
+            srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)"
+            srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/output/github-contribution-grid-snake.svg" />
+    <img alt="contribution snake"
+         src="https://raw.githubusercontent.com/alfredsn/alfredsn/output/github-contribution-grid-snake.svg"
+         width="100%" />
   </picture>
 </div>
 
@@ -137,14 +136,12 @@ coffee.service  ████  CRITICAL
 
 ---
 
-<!-- ================================================================ -->
-<!--  TROPHY CASE                                                      -->
-<!-- ================================================================ -->
-
 ### `$ ls ~/trophies/`
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=alfredsn&theme=flat&no-frame=true&margin-w=10&margin-h=10&column=7&title_color=FF7043&text_color=555555" alt="trophy" width="100%" />
+  <img src="https://github-profile-trophy.vercel.app/?username=alfredsn&theme=flat&no-frame=true&no-bg=true&margin-w=10&margin-h=15&column=7"
+       alt="trophies"
+       width="100%" />
 </div>
 
 ---
@@ -212,38 +209,22 @@ coffee.service  ████  CRITICAL
 ---
 
 <!-- ================================================================ -->
-<!--  MOST USED LANGUAGES — LIGHT                                    -->
+<!--  MOST USED LANGUAGES                                             -->
+<!--  FIX: tambah cache_seconds=86400 supaya tidak kena rate limit   -->
 <!-- ================================================================ -->
 
+### `$ git linguist --breakdown`
+
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alfredsn&layout=compact&hide_border=true&bg_color=FFFAF8&title_color=FF7043&text_color=333333&border_radius=4&langs_count=8" alt="top langs" width="45%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alfredsn&layout=compact&hide_border=true&bg_color=FFFAF8&title_color=FF7043&text_color=333333&border_radius=4&langs_count=8&cache_seconds=86400"
+       alt="top languages"
+       width="48%" />
 </div>
 
 ---
 
 <!-- ================================================================ -->
-<!--  FEATURED PROJECTS — LIGHT                                       -->
-<!-- ================================================================ -->
-
-### `$ ls ~/projects/ --sort=stars`
-
-<div align="center">
-
-<!-- Replace repo-name-1 and repo-name-2 with your actual repo names -->
-<a href="https://github.com/alfredsn/repo-name-1">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=alfredsn&repo=repo-name-1&hide_border=true&bg_color=FFFAF8&title_color=FF7043&icon_color=FF7043&text_color=333333&border_radius=4" />
-</a>
-&nbsp;
-<a href="https://github.com/alfredsn/repo-name-2">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=alfredsn&repo=repo-name-2&hide_border=true&bg_color=FFFAF8&title_color=FF7043&icon_color=FF7043&text_color=333333&border_radius=4" />
-</a>
-
-</div>
-
----
-
-<!-- ================================================================ -->
-<!--  RECENT ACTIVITY (Auto-Updated)                                  -->
+<!--  RECENT ACTIVITY (Auto-Updated by GitHub Actions)               -->
 <!-- ================================================================ -->
 
 ### `$ tail -n 8 ~/activity.log`
@@ -255,7 +236,7 @@ coffee.service  ████  CRITICAL
 ---
 
 <!-- ================================================================ -->
-<!--  QUOTE — LIGHT                                                   -->
+<!--  QUOTE                                                           -->
 <!-- ================================================================ -->
 
 <div align="center">
