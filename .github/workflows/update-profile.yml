@@ -1,66 +1,70 @@
-# ================================================================
-#  GitHub Actions: Auto-update Profile README
-#  File location: .github/workflows/update-profile.yml
-#  Repo: github.com/alfredsn/alfredsn  (same repo as README.md)
-# ================================================================
+# Regenerates the two self-hosted assets used by README.md:
+#   assets/header-{light,dark}.svg  — metrics card, built from the GraphQL API
+#   dist/snake-{light,dark}.svg     — contribution graph animation
+#
+# Both are committed to the repo and served from raw.githubusercontent.com, so the
+# README never depends on a third-party renderer being up.
 
 name: Update Profile README
 
 on:
   schedule:
-    # Runs every day at 00:00 UTC
-    - cron: '0 0 * * *'
-  # Allows manual trigger from Actions tab
+    # 22:17 UTC — deliberately off the hour; GitHub drops scheduled runs that
+    # pile up at :00, which is why the previous '0 0 * * *' rarely fired.
+    - cron: '17 22 * * *'
+  push:
+    branches: [main]
+    # Only re-run when the generator itself changes; asset commits must not retrigger.
+    paths:
+      - '.github/scripts/**'
+      - '.github/workflows/update-profile.yml'
   workflow_dispatch:
+
+concurrency:
+  group: update-profile
+  cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-      # Step 1: Checkout the profile repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Update Recent Activity section
-      - name: Update recent GitHub activity
-        uses: jamesgeorge007/github-activity-readme@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          COMMIT_MSG: 'chore: update recent activity'
-          MAX_LINES: 8
+          node-version: '20'
 
-      # Step 3: Generate 3D Contribution Graph
-      - name: Generate 3D contribution graph
-        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+      # Fails the job rather than emitting a placeholder, so a stale-but-true
+      # card survives an API outage instead of being overwritten with junk.
+      - name: Generate header card
         env:
+          # Swap in a PAT as secrets.METRICS_TOKEN to include private contributions.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: alfredsn
-          # Outputs to: profile-3d-contrib/profile-night-rainbow.svg
-          # Change SETTING_JSON to customize the style if needed
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          PROFILE_LOGIN: ${{ github.repository_owner }}
+        run: node .github/scripts/generate-header.mjs
 
-      # Step 4: Generate Contribution Snake animation
       - name: Generate contribution snake
         uses: Platane/snk@v3
         with:
-          github_user_name: alfredsn
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake-light.svg?palette=github-light
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            dist/snake-light.svg?palette=github-light
+            dist/snake-dark.svg?palette=github-dark
 
-      # Step 5: Commit and push all generated files
-      - name: Commit and push updates
+      - name: Commit refreshed assets
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          # Only commit if there are actual changes
-          git diff --quiet && git diff --staged --quiet \
-            || git commit -m "chore: auto-update profile widgets [skip ci]"
-          git push
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets dist
+          if git diff --cached --quiet; then
+            echo "Assets unchanged — nothing to commit."
+          else
+            git commit -m "chore: refresh profile assets [skip ci]"
+            git push
+          fi
