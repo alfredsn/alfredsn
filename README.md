@@ -14,7 +14,7 @@
 
 ## 01 About
 
-Software engineer in Indonesia, working across mobile, web, and AI tooling.
+Software engineer in Indonesia, mostly building mobile and web apps. Lately a lot of LLM tooling.
 
 Currently building [alfredsn.com](https://alfredsn.com). Happy to collaborate on open source.
 
