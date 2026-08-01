@@ -1,6 +1,6 @@
-# Regenerates the two self-hosted assets used by README.md:
-#   assets/header-{light,dark}.svg  — metrics card, built from the GraphQL API
-#   dist/snake-{light,dark}.svg     — contribution graph animation
+# Rebuilds the assets README.md points at:
+#   assets/header-{light,dark}.svg   metrics card, built from the GraphQL API
+#   dist/snake-{light,dark}.svg      contribution graph animation
 #
 # Both are committed to the repo and served from raw.githubusercontent.com, so the
 # README never depends on a third-party renderer being up.
@@ -9,8 +9,8 @@ name: Update Profile README
 
 on:
   schedule:
-    # 22:17 UTC — deliberately off the hour; GitHub drops scheduled runs that
-    # pile up at :00, which is why the previous '0 0 * * *' rarely fired.
+    # 22:17 UTC. Off-hour slots are less contended than :00, so runs tend to
+    # start closer to their scheduled time.
     - cron: '17 22 * * *'
   push:
     branches: [main]
@@ -39,8 +39,8 @@ jobs:
         with:
           node-version: '20'
 
-      # Fails the job rather than emitting a placeholder, so a stale-but-true
-      # card survives an API outage instead of being overwritten with junk.
+      # Fails the job instead of writing a placeholder, so an API outage leaves
+      # the previous card in place.
       - name: Generate header card
         env:
           # Swap in a PAT as secrets.METRICS_TOKEN to include private contributions.
@@ -63,7 +63,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets dist
           if git diff --cached --quiet; then
-            echo "Assets unchanged — nothing to commit."
+            echo "Assets unchanged, nothing to commit."
           else
             git commit -m "chore: refresh profile assets [skip ci]"
             git push
