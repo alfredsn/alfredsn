@@ -98,7 +98,7 @@ function topLanguage(repos) {
     }
   }
   const ranked = [...bytes.entries()].sort((a, b) => b[1] - a[1]);
-  return ranked.length ? ranked[0][0] : '—';
+  return ranked.length ? ranked[0][0] : 'n/a';
 }
 
 function collect(user) {
@@ -170,7 +170,7 @@ function render(m, t) {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(
     IDENTITY.name
-  )} — ${esc(IDENTITY.role)}. ${m.contributions} contributions in the last year, ${m.streak} day streak, ${
+  )}, ${esc(IDENTITY.role)}. ${m.contributions} contributions in the last year, ${m.streak} day streak, ${
     m.repos
   } public repositories, primary language ${esc(m.language)}.">
   <defs>
