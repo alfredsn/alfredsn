@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="310" viewBox="0 0 880 310" role="img" aria-label="Contribution calendar for the past year. 215 contributions on 80 days. Busiest day: Thu 4 Dec 2025 · 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="310" viewBox="0 0 880 310" role="img" aria-label="Contribution calendar for the past year. 216 contributions on 80 days. Busiest day: Thu 4 Dec 2025 · 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
     .cell { animation: pop 520ms cubic-bezier(.34,1.4,.64,1) both; transform-box: fill-box; transform-origin: center; }
-    .halo { animation: halo 2.4s cubic-bezier(.22,1,.36,1) infinite; transform-box: fill-box; transform-origin: center; }
     .ring { animation: ring 1.6s cubic-bezier(.22,1,.36,1) 1.4s 3 both; transform-box: fill-box; transform-origin: center; }
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
     @keyframes pop  { from { opacity: 0; transform: scale(.3); } }
-    @keyframes halo { 0% { opacity: .55; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.6); } }
     @keyframes ring { 0% { opacity: 0; transform: scale(2.2); } 60% { opacity: 1; transform: scale(1); } 100% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
@@ -407,7 +405,7 @@
     <rect class="cell" style="animation-delay:862ms" x="811" y="158" width="11" height="11" rx="2.5" fill="#21262D"><title>No contributions on 25 Nov 2026</title></rect>
     <rect class="cell" style="animation-delay:872ms" x="811" y="172" width="11" height="11" rx="2.5" fill="#21262D"><title>No contributions on 26 Nov 2026</title></rect>
     <rect class="cell" style="animation-delay:882ms" x="811" y="186" width="11" height="11" rx="2.5" fill="#21262D"><title>No contributions on 27 Nov 2026</title></rect>
-    <rect class="cell" style="animation-delay:892ms" x="811" y="200" width="11" height="11" rx="2.5" fill="#FF7043" fill-opacity="0.32"><title>1 contribution on 28 Nov 2026</title></rect>
+    <rect class="cell" style="animation-delay:892ms" x="811" y="200" width="11" height="11" rx="2.5" fill="#FF7043" fill-opacity="0.55"><title>2 contributions on 28 Nov 2026</title></rect>
   </g>
   <rect class="ring" x="94" y="169" width="17" height="17" rx="5" fill="none" stroke="#F5F5F7" stroke-width="1.5"/>
   <rect x="32" y="228" width="816" height="1" fill="#30363D"/>

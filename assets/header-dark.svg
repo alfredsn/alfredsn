@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Software engineer in Indonesia. Mobile, web, and lately LLM tooling. Active this week · 1 contribution. 215 contributions in the past year across 80 days, longest streak 6 days, most active on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Full-stack software engineer, moving into AI engineering. 216 contributions in the past year across 80 days, longest streak 6 days, most active on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
     .cell { animation: pop 520ms cubic-bezier(.34,1.4,.64,1) both; transform-box: fill-box; transform-origin: center; }
-    .halo { animation: halo 2.4s cubic-bezier(.22,1,.36,1) infinite; transform-box: fill-box; transform-origin: center; }
     .ring { animation: ring 1.6s cubic-bezier(.22,1,.36,1) 1.4s 3 both; transform-box: fill-box; transform-origin: center; }
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
     @keyframes pop  { from { opacity: 0; transform: scale(.3); } }
-    @keyframes halo { 0% { opacity: .55; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.6); } }
     @keyframes ring { 0% { opacity: 0; transform: scale(2.2); } 60% { opacity: 1; transform: scale(1); } 100% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
@@ -17,19 +15,12 @@
   <circle cx="64" cy="64" r="31.5" fill="none" stroke="#30363D"/></g>
   <g class="rise" style="animation-delay:60ms">
     <text x="120" y="62" font-size="30" font-weight="600" letter-spacing="-0.6" fill="#F5F5F7">Alfred Sahala Nainggolan</text>
-    <text x="120" y="88" font-size="15" fill="#A1A1A6">Software engineer in Indonesia. Mobile, web, and lately LLM tooling.</text>
-  </g>
-
-  <g class="rise" style="animation-delay:120ms">
-    <rect x="598" y="32" width="250" height="28" rx="14" fill="none" stroke="#30363D"/>
-    <circle class="halo" cx="614" cy="46" r="4" fill="#30D158"/>
-    <circle cx="614" cy="46" r="4" fill="#30D158"/>
-    <text x="626" y="50.5" font-size="13" fill="#A1A1A6">Active this week · 1 contribution</text>
+    <text x="120" y="88" font-size="15" fill="#A1A1A6">Full-stack software engineer, moving into AI engineering.</text>
   </g>
 
   <rect x="32" y="128" width="816" height="1" fill="#30363D"/>
   <g class="rise" style="animation-delay:200ms">
-    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#F5F5F7">215</text>
+    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#F5F5F7">216</text>
     <text x="32" y="212" font-size="13" fill="#A1A1A6">contributions, past year</text>
   </g>
   <g class="rise" style="animation-delay:290ms">
