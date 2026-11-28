@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Full-stack software engineer, moving into AI engineering. 219 contributions in the past year across 80 days, longest streak 6 days, most active on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Full-stack software engineer, moving into AI engineering. 220 contributions in the past year across 80 days, longest streak 6 days, most active on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
@@ -23,7 +23,7 @@
   </g>
   <rect x="32" y="128" width="816" height="1" fill="#30363D"/>
   <g class="rise" style="animation-delay:200ms">
-    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#F5F5F7">219</text>
+    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#F5F5F7">220</text>
     <text x="32" y="212" font-size="13" fill="#A1A1A6">contributions, past year</text>
   </g>
   <g class="rise" style="animation-delay:290ms">
