@@ -17,9 +17,9 @@ import { replaceBlock } from './lib/readme.mjs';
 
 const LOGIN = process.env.PROFILE_LOGIN || 'alfredsn';
 const TOKEN = process.env.METRICS_TOKEN || process.env.GITHUB_TOKEN;
-// Public stats need only the username; an OAuth token (wakatime.com/oauth) also works if you prefer private stats.
-const WAKATIME_USER = process.env.WAKATIME_USER;
-const WAKATIME_TOKEN = process.env.WAKATIME_TOKEN;
+// WakaTime connection, from the STATS_WAKA secret (or the WAKATIME_USER / WAKATIME_TOKEN vars).
+// The value can be a username (public stats) or an OAuth token (private stats); see wakatimeAuth().
+const WAKATIME = (process.env.STATS_WAKA || process.env.WAKATIME_TOKEN || process.env.WAKATIME_USER || '').trim();
 const OUT_DIR = resolve(process.cwd(), process.env.OUT_DIR || 'assets');
 const README = resolve(process.cwd(), 'README.md');
 const RAW = `https://raw.githubusercontent.com/${LOGIN}/${LOGIN}/main`;
@@ -295,23 +295,45 @@ function renderCity(data, m, t, today) {
  * activity publicly" on in WakaTime settings), or an OAuth token if one is configured.
  * null means "not connected"; undefined means "connected but no fresh data, keep what's there".
  */
+/** Works out what kind of value STATS_WAKA holds. Reports the kind, never the value. */
+function wakatimeAuth(value) {
+  if (/^waka_tok_/.test(value)) return { kind: 'OAuth token', who: 'current', headers: { Authorization: `Bearer ${value}` } };
+  if (/^waka_[0-9a-f-]{36}$/i.test(value)) return { kind: 'plugin API key' };
+  return { kind: 'username', who: encodeURIComponent(value.replace(/^@/, '')), headers: {} };
+}
+
+/** A GitHub Actions annotation, so the outcome shows on the run page without digging through logs. */
+const notice = (level, message) => console.log(process.env.GITHUB_ACTIONS ? `::${level} title=WakaTime::${message}` : `WakaTime: ${message}`);
+
 async function fetchWakaTime() {
-  if (!WAKATIME_USER && !WAKATIME_TOKEN && !process.env.WAKATIME_FIXTURE) return null;
+  if (!WAKATIME && !process.env.WAKATIME_FIXTURE) return null;
   try {
     let data;
     if (process.env.WAKATIME_FIXTURE) {
       ({ data } = JSON.parse(await readFile(process.env.WAKATIME_FIXTURE, 'utf8')));
     } else {
-      const who = WAKATIME_TOKEN ? 'current' : encodeURIComponent(WAKATIME_USER);
-      const res = await fetch(`https://wakatime.com/api/v1/users/${who}/stats/last_7_days`, {
-        headers: WAKATIME_TOKEN ? { Authorization: `Bearer ${WAKATIME_TOKEN}` } : {},
-      });
+      const auth = wakatimeAuth(WAKATIME);
+      if (!auth.who) {
+        notice(
+          'warning',
+          'STATS_WAKA holds a plugin API key, which WakaTime does not accept for reading stats. Replace it with your WakaTime username (and make your stats public) or an OAuth token from wakatime.com/oauth.'
+        );
+        return null;
+      }
+      const res = await fetch(`https://wakatime.com/api/v1/users/${auth.who}/stats/last_7_days`, { headers: auth.headers });
       // 202: WakaTime is still crunching the numbers; the next daily run picks them up.
       if (res.status !== 200) {
-        console.warn(`WakaTime responded ${res.status}; keeping the previous card.`);
+        const hint =
+          res.status === 404 && auth.kind === 'username'
+            ? ' Check the username, and turn on public languages and code time in WakaTime profile settings.'
+            : res.status === 202
+              ? ' Stats are still being calculated.'
+              : '';
+        notice('warning', `Using a ${auth.kind}: WakaTime responded ${res.status}; keeping the previous card.${hint}`);
         return undefined;
       }
       ({ data } = await res.json());
+      notice('notice', `Using a ${auth.kind}: stats loaded (${(data?.languages || []).length} languages this week).`);
     }
     const languages = (data?.languages || []).filter((l) => l.total_seconds >= 60 && l.name !== 'Other').slice(0, 6);
     if (!languages.length) return undefined;

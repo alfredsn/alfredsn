@@ -47,11 +47,10 @@ jobs:
           # Swap in a PAT as secrets.METRICS_TOKEN to include private contributions.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
-          # Optional "This week in code" card. Set the repo variable WAKATIME_USER to your WakaTime
-          # username and make your languages and coding activity public in WakaTime settings.
-          # (Plugin API keys can't read stats; a WAKATIME_TOKEN OAuth secret is the private alternative.)
-          WAKATIME_USER: ${{ vars.WAKATIME_USER }}
-          WAKATIME_TOKEN: ${{ secrets.WAKATIME_TOKEN }}
+          # Optional "This week in code" card. STATS_WAKA holds either your WakaTime username
+          # (with languages and code time set to public in WakaTime) or an OAuth token from
+          # wakatime.com/oauth. Plugin API keys can't read stats.
+          STATS_WAKA: ${{ secrets.STATS_WAKA }}
           PROFILE_LOGIN: ${{ github.repository_owner }}
         run: node .github/scripts/cards.mjs
 
