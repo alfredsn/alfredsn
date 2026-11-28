@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="310" viewBox="0 0 880 310" role="img" aria-label="Contribution calendar for the past year. 212 contributions on 79 days. Busiest day: Thu 4 Dec 2025 · 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="310" viewBox="0 0 880 310" role="img" aria-label="Contribution calendar for the past year. 215 contributions on 80 days. Busiest day: Thu 4 Dec 2025 · 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
@@ -288,7 +288,7 @@
     <rect class="cell" style="animation-delay:590ms" x="573" y="158" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 29 Jul 2026</title></rect>
     <rect class="cell" style="animation-delay:600ms" x="573" y="172" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 30 Jul 2026</title></rect>
     <rect class="cell" style="animation-delay:610ms" x="573" y="186" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 31 Jul 2026</title></rect>
-    <rect class="cell" style="animation-delay:620ms" x="573" y="200" width="11" height="11" rx="2.5" fill="#F4511E" fill-opacity="0.78"><title>3 contributions on 1 Aug 2026</title></rect>
+    <rect class="cell" style="animation-delay:620ms" x="573" y="200" width="11" height="11" rx="2.5" fill="#F4511E" fill-opacity="1"><title>5 contributions on 1 Aug 2026</title></rect>
     <rect class="cell" style="animation-delay:576ms" x="587" y="116" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 2 Aug 2026</title></rect>
     <rect class="cell" style="animation-delay:586ms" x="587" y="130" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 3 Aug 2026</title></rect>
     <rect class="cell" style="animation-delay:596ms" x="587" y="144" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 4 Aug 2026</title></rect>
@@ -407,7 +407,7 @@
     <rect class="cell" style="animation-delay:862ms" x="811" y="158" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 25 Nov 2026</title></rect>
     <rect class="cell" style="animation-delay:872ms" x="811" y="172" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 26 Nov 2026</title></rect>
     <rect class="cell" style="animation-delay:882ms" x="811" y="186" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 27 Nov 2026</title></rect>
-    <rect class="cell" style="animation-delay:892ms" x="811" y="200" width="11" height="11" rx="2.5" fill="#F2F2F7"><title>No contributions on 28 Nov 2026</title></rect>
+    <rect class="cell" style="animation-delay:892ms" x="811" y="200" width="11" height="11" rx="2.5" fill="#F4511E" fill-opacity="0.32"><title>1 contribution on 28 Nov 2026</title></rect>
   </g>
   <rect class="ring" x="94" y="169" width="17" height="17" rx="5" fill="none" stroke="#1D1D1F" stroke-width="1.5"/>
   <rect x="32" y="228" width="816" height="1" fill="#E5E5EA"/>
