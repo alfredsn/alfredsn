@@ -8,14 +8,15 @@
 
 [alfredsn.com](https://alfredsn.com) · [LinkedIn](https://www.linkedin.com/in/alfredsn/) · [contact@alfredsn.com](mailto:contact@alfredsn.com)
 
-I build mobile and web apps, and lately a lot of LLM tooling. Most of that work lives in private repos, so the cards here only show the rhythm of it, not the code. They rebuild themselves every morning from the GitHub API.
+I'm a software engineer based in Indonesia. I started out building Android apps and now work full-stack, from the UI down to the API and the database. More and more of my work is AI engineering: building product features on top of LLMs.
 
-Right now I'm building [alfredsn.com](https://alfredsn.com). If you have an open source project that could use another pair of hands, I'd like to hear about it.
+Currently building [alfredsn.com](https://alfredsn.com). Open to collaborating on open source.
 
-**Mobile**: Kotlin, Android, React Native<br>
-**Web**: TypeScript, React, Next.js, Node.js<br>
-**Backend and AI**: Go, Python, LangChain<br>
-**Also used**: Java, Flutter, PostgreSQL, MongoDB, GraphQL, Tailwind, Docker, AWS, GitHub Actions, Figma
+**Frontend** &nbsp; TypeScript · React · Next.js · Tailwind<br>
+**Backend** &nbsp; Node.js · Go · Python · PostgreSQL · MongoDB · GraphQL<br>
+**Mobile** &nbsp; Kotlin · Android · React Native · Flutter · Java<br>
+**AI** &nbsp; LangChain · LLM APIs<br>
+**Tooling** &nbsp; Docker · AWS · GitHub Actions · Figma
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/year-dark.svg">
@@ -23,9 +24,15 @@ Right now I'm building [alfredsn.com](https://alfredsn.com). If you have an open
   <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/year-light.svg" alt="Contribution calendar for the past year, with the busiest day, longest run, and most active weekday." width="100%">
 </picture>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-light.svg">
+  <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-light.svg" alt="A snake eating my contribution graph" width="100%">
+</picture>
+
 ### Guestbook
 
-Passing through? **[Sign the guestbook](https://github.com/alfredsn/alfredsn/issues/new?title=guestbook%3A+hello&body=Just+press+%22Create%22.+A+bot+adds+your+avatar+to+the+wall+on+my+profile%2C+then+closes+this+issue.)**. Press Create on the issue that opens. A bot adds your avatar below within a minute or so.
+Passing through? **[Sign the guestbook](https://github.com/alfredsn/alfredsn/issues/new?title=guestbook%3A+hello&body=Just+press+%22Create%22.+A+bot+adds+your+avatar+to+the+wall+on+my+profile%2C+then+closes+this+issue.)**. Press Create on the issue that opens, and a bot adds your avatar here within a minute.
 
 <!-- guestbook:start -->
 <sub>Nobody yet. You could be first.</sub>

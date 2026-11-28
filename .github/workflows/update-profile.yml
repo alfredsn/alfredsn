@@ -1,8 +1,9 @@
 # Rebuilds the cards README.md points at:
-#   assets/header-{light,dark}.svg   identity, live status, stats
+#   assets/header-{light,dark}.svg   identity and stats
 #   assets/year-{light,dark}.svg     animated contribution calendar
+#   dist/snake-{light,dark}.svg      the snake eating the contribution graph
 #
-# Both are committed to the repo and served from raw.githubusercontent.com, so the
+# All are committed to the repo and served from raw.githubusercontent.com, so the
 # README never depends on a third-party renderer being up.
 
 name: Update Profile README
@@ -49,11 +50,19 @@ jobs:
           PROFILE_LOGIN: ${{ github.repository_owner }}
         run: node .github/scripts/generate-header.mjs
 
+      - name: Generate contribution snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-light.svg?palette=github-light
+            dist/snake-dark.svg?palette=github-dark
+
       - name: Commit refreshed cards
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets
+          git add assets dist
           if git diff --cached --quiet; then
             echo "Cards unchanged, nothing to commit."
             exit 0

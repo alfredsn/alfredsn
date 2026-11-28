@@ -1,5 +1,5 @@
 // Builds the two cards README.md points at, in light and dark:
-//   assets/header-*.svg  identity, live status, four stats from the contribution calendar
+//   assets/header-*.svg  identity and four stats from the contribution calendar
 //   assets/year-*.svg    animated contribution calendar with annotations
 //
 // Every number comes from the GitHub GraphQL API at build time. Nothing is typed in by hand.
@@ -14,7 +14,7 @@ const OUT_DIR = resolve(process.cwd(), process.env.OUT_DIR || 'assets');
 
 const IDENTITY = {
   name: 'Alfred Sahala Nainggolan',
-  tagline: 'Software engineer in Indonesia. Mobile, web, and lately LLM tooling.',
+  tagline: 'Full-stack software engineer, moving into AI engineering.',
 };
 
 // Semantic tokens, Apple-style: labels step down in three levels, and dark mode
@@ -29,8 +29,6 @@ const THEMES = {
     separator: '#E5E5EA',
     empty: '#F2F2F7',
     accent: '#F4511E',
-    live: '#34C759',
-    idle: '#AEAEB2',
   },
   dark: {
     card: '#161B22',
@@ -41,8 +39,6 @@ const THEMES = {
     separator: '#30363D',
     empty: '#21262D',
     accent: '#FF7043',
-    live: '#30D158',
-    idle: '#636366',
   },
 };
 
@@ -111,7 +107,6 @@ const utc = (date) => new Date(`${date}T00:00:00Z`);
 // en-US for the parts: en-GB abbreviates September to "Sept".
 const fmt = (date, opts) => utc(date).toLocaleDateString('en-US', { timeZone: 'UTC', ...opts });
 const longDate = (date) => `${utc(date).getUTCDate()} ${fmt(date, { month: 'short' })} ${utc(date).getUTCFullYear()}`;
-const daysBetween = (a, b) => Math.round((utc(b) - utc(a)) / 86_400_000);
 
 function analyse({ weeks, total }, today) {
   const days = weeks.flatMap((w) => w.contributionDays).filter((d) => d.date <= today);
@@ -129,8 +124,6 @@ function analyse({ weeks, total }, today) {
   const topWeekday = byWeekday.indexOf(Math.max(...byWeekday));
 
   const busiest = active.reduce((best, d) => (d.contributionCount > (best?.contributionCount ?? 0) ? d : best), null);
-  const lastActive = active.at(-1)?.date ?? null;
-  const last7 = days.slice(-7).reduce((s, d) => s + d.contributionCount, 0);
 
   return {
     total,
@@ -138,9 +131,6 @@ function analyse({ weeks, total }, today) {
     longest,
     topWeekday: active.length ? WEEKDAYS[topWeekday] : 'n/a',
     busiest,
-    lastActive,
-    last7,
-    sinceLast: lastActive ? daysBetween(lastActive, today) : Infinity,
   };
 }
 
@@ -149,18 +139,13 @@ function analyse({ weeks, total }, today) {
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);
 
-/** Rough advance width for the system UI stack, used only to size pills. */
-const textWidth = (s, size) => [...s].reduce((w, ch) => w + (/[ il.,·']/.test(ch) ? 0.3 : /[A-Z0-9mw]/.test(ch) ? 0.66 : 0.54), 0) * size;
-
 const STYLE = `
     text { font-family: ${FONT}; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
     .cell { animation: pop 520ms cubic-bezier(.34,1.4,.64,1) both; transform-box: fill-box; transform-origin: center; }
-    .halo { animation: halo 2.4s cubic-bezier(.22,1,.36,1) infinite; transform-box: fill-box; transform-origin: center; }
     .ring { animation: ring 1.6s cubic-bezier(.22,1,.36,1) 1.4s 3 both; transform-box: fill-box; transform-origin: center; }
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
     @keyframes pop  { from { opacity: 0; transform: scale(.3); } }
-    @keyframes halo { 0% { opacity: .55; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(2.6); } }
     @keyframes ring { 0% { opacity: 0; transform: scale(2.2); } 60% { opacity: 1; transform: scale(1); } 100% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }`;
 
@@ -174,24 +159,9 @@ ${body}
 
 // ---------------------------------------------------------------- header card
 
-function status(m) {
-  if (m.sinceLast <= 7) return { live: true, text: `Active this week · ${m.last7} contribution${m.last7 === 1 ? '' : 's'}` };
-  if (m.lastActive) return { live: false, text: `Last contribution ${longDate(m.lastActive)}` };
-  return { live: false, text: 'No contributions this year' };
-}
-
 function renderHeader(m, t, avatar) {
   const W = 880;
   const H = 240;
-  const s = status(m);
-
-  const pillH = 28;
-  const pillW = Math.ceil(textWidth(s.text, 13) + 44);
-  const pillX = W - 32 - pillW;
-  const dotColor = s.live ? t.live : t.idle;
-  const dotX = pillX + 16;
-  const dotY = 32 + pillH / 2;
-
   const textX = avatar ? 120 : 32;
 
   const stats = [
@@ -216,13 +186,6 @@ ${avatar ? `  <g class="rise"><image href="${avatar}" x="32" y="32" width="64" h
     <text x="${textX}" y="88" font-size="15" fill="${t.secondary}">${esc(IDENTITY.tagline)}</text>
   </g>
 
-  <g class="rise" style="animation-delay:120ms">
-    <rect x="${pillX}" y="32" width="${pillW}" height="${pillH}" rx="${pillH / 2}" fill="none" stroke="${t.separator}"/>
-    ${s.live ? `<circle class="halo" cx="${dotX}" cy="${dotY}" r="4" fill="${dotColor}"/>` : ''}
-    <circle cx="${dotX}" cy="${dotY}" r="4" fill="${dotColor}"/>
-    <text x="${dotX + 12}" y="${dotY + 4.5}" font-size="13" fill="${t.secondary}">${esc(s.text)}</text>
-  </g>
-
   <rect x="32" y="128" width="${W - 64}" height="1" fill="${t.separator}"/>
 ${stats}`;
 
@@ -230,7 +193,7 @@ ${stats}`;
     W,
     H,
     t,
-    `${IDENTITY.name}. ${IDENTITY.tagline} ${s.text}. ${m.total} contributions in the past year across ${m.activeDays} days, longest streak ${m.longest} days, most active on ${m.topWeekday}s.`,
+    `${IDENTITY.name}. ${IDENTITY.tagline} ${m.total} contributions in the past year across ${m.activeDays} days, longest streak ${m.longest} days, most active on ${m.topWeekday}s.`,
     body
   );
 }
