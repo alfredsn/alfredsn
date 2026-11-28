@@ -17,7 +17,9 @@ import { replaceBlock } from './lib/readme.mjs';
 
 const LOGIN = process.env.PROFILE_LOGIN || 'alfredsn';
 const TOKEN = process.env.METRICS_TOKEN || process.env.GITHUB_TOKEN;
-const WAKATIME_KEY = process.env.WAKATIME_API_KEY;
+// Public stats need only the username; an OAuth token (wakatime.com/oauth) also works if you prefer private stats.
+const WAKATIME_USER = process.env.WAKATIME_USER;
+const WAKATIME_TOKEN = process.env.WAKATIME_TOKEN;
 const OUT_DIR = resolve(process.cwd(), process.env.OUT_DIR || 'assets');
 const README = resolve(process.cwd(), 'README.md');
 const RAW = `https://raw.githubusercontent.com/${LOGIN}/${LOGIN}/main`;
@@ -287,18 +289,25 @@ function renderCity(data, m, t, today) {
 
 // ---------------------------------------------------------------- coding card (WakaTime)
 
-/** null means "not connected"; undefined means "connected but no fresh data, keep what's there". */
+/**
+ * Reads last week's stats. WakaTime only lets plugin API keys send heartbeats, not read stats,
+ * so this uses the public stats endpoint (no secret; needs "display languages and coding
+ * activity publicly" on in WakaTime settings), or an OAuth token if one is configured.
+ * null means "not connected"; undefined means "connected but no fresh data, keep what's there".
+ */
 async function fetchWakaTime() {
-  if (!WAKATIME_KEY && !process.env.WAKATIME_FIXTURE) return null;
+  if (!WAKATIME_USER && !WAKATIME_TOKEN && !process.env.WAKATIME_FIXTURE) return null;
   try {
     let data;
     if (process.env.WAKATIME_FIXTURE) {
       ({ data } = JSON.parse(await readFile(process.env.WAKATIME_FIXTURE, 'utf8')));
     } else {
-      const res = await fetch('https://wakatime.com/api/v1/users/current/stats/last_7_days', {
-        headers: { Authorization: `Basic ${Buffer.from(WAKATIME_KEY).toString('base64')}` },
+      const who = WAKATIME_TOKEN ? 'current' : encodeURIComponent(WAKATIME_USER);
+      const res = await fetch(`https://wakatime.com/api/v1/users/${who}/stats/last_7_days`, {
+        headers: WAKATIME_TOKEN ? { Authorization: `Bearer ${WAKATIME_TOKEN}` } : {},
       });
-      if (!res.ok) {
+      // 202: WakaTime is still crunching the numbers; the next daily run picks them up.
+      if (res.status !== 200) {
         console.warn(`WakaTime responded ${res.status}; keeping the previous card.`);
         return undefined;
       }
