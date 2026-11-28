@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="371" viewBox="0 0 880 371" role="img" aria-label="The past year as an isometric city, one building per day. 212 contributions on 79 days. Busiest day: Thu 4 Dec 2025, 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="371" viewBox="0 0 880 371" role="img" aria-label="The past year as an isometric city, one building per day. 217 contributions on 80 days. Busiest day: Thu 4 Dec 2025, 11 contributions. Longest run: 6 days in a row. Rhythm: Most work lands on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
@@ -1355,9 +1355,9 @@
       <polygon points="633.0,198.5 643.0,199.5 637.4,203.9 627.4,202.8" fill="#F2F2F7"/>
     </g>
     <g class="grow" style="animation-delay:538ms">
-      <polygon points="522.9,230.2 532.9,231.3 532.9,199.1 522.9,198.1" fill="#994a32"/>
-      <polygon points="538.5,226.9 532.9,231.3 532.9,199.1 538.5,194.8" fill="#c55f40"/>
-      <polygon points="528.5,193.8 538.5,194.8 532.9,199.1 522.9,198.1" fill="#f67750"/>
+      <polygon points="522.9,230.2 532.9,231.3 532.9,191.6 522.9,190.5" fill="#973213"/>
+      <polygon points="538.5,226.9 532.9,231.3 532.9,191.6 538.5,187.2" fill="#c34118"/>
+      <polygon points="528.5,186.2 538.5,187.2 532.9,191.6 522.9,190.5" fill="#f4511e"/>
     </g>
     <g class="grow" style="animation-delay:544ms">
       <polygon points="542.4,226.1 552.4,227.2 552.4,225.7 542.4,224.6" fill="#969699"/>
@@ -1875,9 +1875,9 @@
       <polygon points="748.0,241.1 758.0,242.1 752.4,246.5 742.4,245.4" fill="#F2F2F7"/>
     </g>
     <g class="grow" style="animation-delay:776ms">
-      <polygon points="735.4,252.3 745.4,253.4 745.4,251.9 735.4,250.8" fill="#969699"/>
-      <polygon points="751.0,249.0 745.4,253.4 745.4,251.9 751.0,247.5" fill="#c2c2c6"/>
-      <polygon points="741.0,246.5 751.0,247.5 745.4,251.9 735.4,250.8" fill="#F2F2F7"/>
+      <polygon points="735.4,252.3 745.4,253.4 745.4,221.2 735.4,220.2" fill="#994a32"/>
+      <polygon points="751.0,249.0 745.4,253.4 745.4,221.2 751.0,216.9" fill="#c55f40"/>
+      <polygon points="741.0,215.9 751.0,216.9 745.4,221.2 735.4,220.2" fill="#f67750"/>
     </g>
   </g>
   <g class="rise" style="animation-delay:900ms"><text x="81.2" y="200.0" font-size="11" fill="#8E8E93">Nov</text><text x="156.2" y="207.8" font-size="11" fill="#8E8E93">Jan</text><text x="206.2" y="213.0" font-size="11" fill="#8E8E93">Feb</text><text x="256.2" y="218.2" font-size="11" fill="#8E8E93">Mar</text><text x="318.7" y="224.7" font-size="11" fill="#8E8E93">Apr</text><text x="368.7" y="229.9" font-size="11" fill="#8E8E93">May</text><text x="431.2" y="236.4" font-size="11" fill="#8E8E93">Jun</text><text x="481.2" y="241.6" font-size="11" fill="#8E8E93">Jul</text><text x="531.2" y="246.8" font-size="11" fill="#8E8E93">Aug</text><text x="593.7" y="253.3" font-size="11" fill="#8E8E93">Sep</text><text x="643.7" y="258.5" font-size="11" fill="#8E8E93">Oct</text><text x="693.7" y="263.7" font-size="11" fill="#8E8E93">Nov</text></g>
