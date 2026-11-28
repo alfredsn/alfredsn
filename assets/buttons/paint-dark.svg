@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="40" viewBox="0 0 150 40" role="img" aria-label="Paint a pixel">
+  <style>text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; }</style>
+  <rect x=".5" y=".5" width="149" height="39" rx="19.5" fill="#FF7043" stroke="#FF7043"/>
+  <path d="M2 2h5v5H2zM9 9h5v5H9zM9 2h5v5H9z" transform="translate(18 12)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="86" y="25" text-anchor="middle" font-size="14" font-weight="600" fill="#FFFFFF">Paint a pixel</text>
+</svg>

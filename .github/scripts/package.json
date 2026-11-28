@@ -1,0 +1,12 @@
+{
+  "name": "profile-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Builds the profile cards and answers profile issues (guestbook, canvas, Ask my AI).",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0"
+  }
+}

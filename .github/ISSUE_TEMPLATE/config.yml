@@ -1,0 +1,6 @@
+# Blank issues stay on: the README's guestbook and suggested-question links open them with a prefilled title.
+blank_issues_enabled: true
+contact_links:
+  - name: Email Alfred
+    url: https://alfredsn.com
+    about: For anything longer, reach out through his site.

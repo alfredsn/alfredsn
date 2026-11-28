@@ -1,0 +1,34 @@
+name: Paint a pixel
+description: Paint one cell of the community canvas on Alfred's profile.
+title: "pixel: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pick a cell and a color, then press **Create**. A bot paints it within a minute, adds your avatar to the wall, and closes this issue.
+  - type: input
+    id: cell
+    attributes:
+      label: Cell
+      description: Column A to X, row 1 to 24. The canvas shows the labels.
+      placeholder: F7
+    validations:
+      required: true
+  - type: dropdown
+    id: color
+    attributes:
+      label: Color
+      options:
+        - orange
+        - red
+        - yellow
+        - green
+        - sky
+        - blue
+        - purple
+        - pink
+        - white
+        - black
+        - erase
+    validations:
+      required: true

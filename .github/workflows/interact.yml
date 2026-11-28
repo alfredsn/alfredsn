@@ -1,0 +1,70 @@
+# Everything a visitor can do from the profile starts with an issue (see .github/scripts/interact.mjs):
+#   guestbook: ...   add their avatar to the wall
+#   pixel: ...       paint one cell of the community canvas
+#   ask: ...         get an answer from an AI that only knows data/about.md
+#
+# Visitor text never reaches a shell: titles are only compared in `if:` expressions here,
+# and the script reads the issue from the event payload file.
+
+name: Profile interactions
+
+on:
+  issues:
+    types: [opened]
+
+# One at a time, and never drop a queued one.
+concurrency:
+  group: interact
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  handle:
+    if: >-
+      startsWith(github.event.issue.title, 'guestbook') ||
+      startsWith(github.event.issue.title, 'pixel') ||
+      startsWith(github.event.issue.title, 'ask')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Only questions need the Anthropic SDK.
+      - name: Install dependencies
+        if: startsWith(github.event.issue.title, 'ask')
+        run: npm ci --prefix .github/scripts
+
+      - name: Handle the issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node .github/scripts/interact.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md data assets/canvas-*.svg
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore: profile interaction [skip ci]"
+          # The daily card refresh may have pushed in the meantime.
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
+
+      # Only after the push, so the visitor is told once it is actually live.
+      - name: Reply and close
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/interact.mjs reply

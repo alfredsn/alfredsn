@@ -1,12 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Full-stack software engineer, moving into AI engineering. 216 contributions in the past year across 80 days, longest streak 6 days, most active on Wednesdays.">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="240" viewBox="0 0 880 240" role="img" aria-label="Alfred Sahala Nainggolan. Full-stack software engineer, moving into AI engineering. 212 contributions in the past year across 79 days, longest streak 6 days, most active on Wednesdays.">
   <style>
     text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; font-variant-numeric: tabular-nums; }
     .rise { animation: rise 900ms cubic-bezier(.22,1,.36,1) both; }
-    .cell { animation: pop 520ms cubic-bezier(.34,1.4,.64,1) both; transform-box: fill-box; transform-origin: center; }
-    .ring { animation: ring 1.6s cubic-bezier(.22,1,.36,1) 1.4s 3 both; transform-box: fill-box; transform-origin: center; }
+    .pop  { animation: pop 520ms cubic-bezier(.34,1.4,.64,1) both; transform-box: fill-box; transform-origin: center; }
+    .grow { animation: grow 900ms cubic-bezier(.34,1.25,.64,1) both; transform-box: fill-box; transform-origin: 50% 100%; }
+    .fill { animation: fill 1100ms cubic-bezier(.22,1,.36,1) both; transform-box: fill-box; transform-origin: 0 50%; }
+    .ping { animation: ping 2.2s cubic-bezier(.22,1,.36,1) 1.6s infinite both; transform-box: fill-box; transform-origin: center; }
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
     @keyframes pop  { from { opacity: 0; transform: scale(.3); } }
-    @keyframes ring { 0% { opacity: 0; transform: scale(2.2); } 60% { opacity: 1; transform: scale(1); } 100% { opacity: 1; } }
+    @keyframes grow { from { transform: scaleY(0); } }
+    @keyframes fill { from { transform: scaleX(0); } }
+    @keyframes ping { 0% { opacity: .8; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(2.4); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <rect x=".5" y=".5" width="879" height="239" rx="16" fill="#FFFFFF" stroke="#D0D7DE"/>
@@ -17,14 +21,13 @@
     <text x="120" y="62" font-size="30" font-weight="600" letter-spacing="-0.6" fill="#1D1D1F">Alfred Sahala Nainggolan</text>
     <text x="120" y="88" font-size="15" fill="#6E6E73">Full-stack software engineer, moving into AI engineering.</text>
   </g>
-
   <rect x="32" y="128" width="816" height="1" fill="#E5E5EA"/>
   <g class="rise" style="animation-delay:200ms">
-    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#1D1D1F">216</text>
+    <text x="32" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#1D1D1F">212</text>
     <text x="32" y="212" font-size="13" fill="#6E6E73">contributions, past year</text>
   </g>
   <g class="rise" style="animation-delay:290ms">
-    <text x="236" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#1D1D1F">80</text>
+    <text x="236" y="188" font-size="28" font-weight="600" letter-spacing="-0.4" fill="#1D1D1F">79</text>
     <text x="236" y="212" font-size="13" fill="#6E6E73">days with a commit</text>
   </g>
   <g class="rise" style="animation-delay:380ms">

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="207" height="40" viewBox="0 0 207 40" role="img" aria-label="What is Alfred building?">
+  <style>text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; }</style>
+  <rect x=".5" y=".5" width="206" height="39" rx="19.5" fill="#FFFFFF" stroke="#D0D7DE"/>
+  
+  <text x="103.5" y="25" text-anchor="middle" font-size="14" font-weight="600" fill="#1D1D1F">What is Alfred building?</text>
+</svg>

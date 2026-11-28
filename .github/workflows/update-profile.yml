@@ -1,23 +1,25 @@
-# Rebuilds the cards README.md points at:
-#   assets/header-{light,dark}.svg   identity and stats
-#   assets/year-{light,dark}.svg     animated contribution calendar
-#   dist/snake-{light,dark}.svg      the snake eating the contribution graph
+# Rebuilds everything README.md shows (see .github/scripts/cards.mjs):
+#   assets/{header,city,coding}-{light,dark}.svg   cards
+#   assets/buttons/*.svg                           call-to-action buttons
+#   dist/snake-{light,dark}.svg                    the snake, in the profile's colors
+#   README.md                                      the WakaTime block, shown only while connected
+# The canvas is redrawn by interact.yml whenever someone paints, not here.
 #
-# All are committed to the repo and served from raw.githubusercontent.com, so the
-# README never depends on a third-party renderer being up.
+# All of it is committed and served from raw.githubusercontent.com, so the README never
+# depends on a third-party renderer being up.
 
 name: Update Profile README
 
 on:
   schedule:
-    # 22:17 UTC (05:17 WIB). Off-hour slots are less contended than :00, so runs
-    # tend to start closer to their scheduled time.
+    # 22:17 UTC (05:17 WIB). Off-hour slots are less contended than :00.
     - cron: '17 22 * * *'
   push:
     branches: [main]
-    # Only re-run when the generator itself changes; asset commits must not retrigger.
+    # Only re-run when the build itself changes; asset commits must not retrigger.
     paths:
-      - '.github/scripts/generate-header.mjs'
+      - '.github/scripts/cards.mjs'
+      - '.github/scripts/lib/**'
       - '.github/workflows/update-profile.yml'
   workflow_dispatch:
 
@@ -32,11 +34,9 @@ jobs:
   update-cards:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -47,28 +47,33 @@ jobs:
           # Swap in a PAT as secrets.METRICS_TOKEN to include private contributions.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          # Optional. Without it the "This week in code" card stays out of the README.
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
           PROFILE_LOGIN: ${{ github.repository_owner }}
-        run: node .github/scripts/generate-header.mjs
+        run: node .github/scripts/cards.mjs
 
+      # Same colors as the cards: the empty cell, then the accent at the four activity
+      # levels laid over GitHub's page background (LEVELS in lib/theme.mjs).
       - name: Generate contribution snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/snake-light.svg?palette=github-light
-            dist/snake-dark.svg?palette=github-dark
+            dist/snake-light.svg?palette=github-light&color_snake=#1D1D1F&color_dots=#F2F2F7,#FCC7B7,#F99F83,#F67750,#F4511E
+            dist/snake-dark.svg?palette=github-dark&color_snake=#F5F5F7&color_dots=#21262D,#5A2F25,#924530,#CA5B39,#FF7043
 
       - name: Commit refreshed cards
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets dist
+          git add assets dist README.md
           if git diff --cached --quiet; then
             echo "Cards unchanged, nothing to commit."
             exit 0
           fi
           git commit -m "chore: refresh profile cards [skip ci]"
-          # A guestbook signature may have pushed in the meantime; it only touches README.md and data/.
+          # A visitor's issue may have pushed in the meantime. It only touches data/, the
+          # canvas, and the guestbook block of README.md, so the rebase applies cleanly.
           for i in 1 2 3; do
             git pull --rebase && git push && exit 0
             sleep 5
