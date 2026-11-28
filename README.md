@@ -1,53 +1,32 @@
-<div align="center">
+<a href="https://alfredsn.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-light.svg">
+    <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-light.svg" alt="Alfred Sahala Nainggolan, software engineer in Indonesia. Live stats from the GitHub API." width="100%">
+  </picture>
+</a>
+
+[alfredsn.com](https://alfredsn.com) · [LinkedIn](https://www.linkedin.com/in/alfredsn/) · [contact@alfredsn.com](mailto:contact@alfredsn.com)
+
+I build mobile and web apps, and lately a lot of LLM tooling. Most of that work lives in private repos, so the cards here only show the rhythm of it, not the code. They rebuild themselves every morning from the GitHub API.
+
+Right now I'm building [alfredsn.com](https://alfredsn.com). If you have an open source project that could use another pair of hands, I'd like to hear about it.
+
+**Mobile**: Kotlin, Android, React Native<br>
+**Web**: TypeScript, React, Next.js, Node.js<br>
+**Backend and AI**: Go, Python, LangChain<br>
+**Also used**: Java, Flutter, PostgreSQL, MongoDB, GraphQL, Tailwind, Docker, AWS, GitHub Actions, Figma
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-light.svg">
-  <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/header-light.svg" alt="Alfred Sahala Nainggolan, Software Engineer, Indonesia" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/year-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/year-light.svg">
+  <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/year-light.svg" alt="Contribution calendar for the past year, with the busiest day, longest run, and most active weekday." width="100%">
 </picture>
 
-**[alfredsn.com](https://alfredsn.com)**&nbsp; · &nbsp;[LinkedIn](https://www.linkedin.com/in/alfredsn/)&nbsp; · &nbsp;[contact@alfredsn.com](mailto:contact@alfredsn.com)
+### Guestbook
 
-</div>
+Passing through? **[Sign the guestbook](https://github.com/alfredsn/alfredsn/issues/new?title=guestbook%3A+hello&body=Just+press+%22Create%22.+A+bot+adds+your+avatar+to+the+wall+on+my+profile%2C+then+closes+this+issue.)**. Press Create on the issue that opens. A bot adds your avatar below within a minute or so.
 
-<br>
-
-## 01 About
-
-Software engineer in Indonesia, mostly building mobile and web apps. Lately a lot of LLM tooling.
-
-Currently building [alfredsn.com](https://alfredsn.com). Happy to collaborate on open source.
-
-<br>
-
-## 02 Stack
-
-**Primary**
-
-![Kotlin](https://img.shields.io/badge/Kotlin-2E2E2E?style=flat-square&logo=kotlin&logoColor=FF7043)
-![Android](https://img.shields.io/badge/Android-2E2E2E?style=flat-square&logo=android&logoColor=FF7043)
-![React Native](https://img.shields.io/badge/React_Native-2E2E2E?style=flat-square&logo=react&logoColor=FF7043)
-![TypeScript](https://img.shields.io/badge/TypeScript-2E2E2E?style=flat-square&logo=typescript&logoColor=FF7043)
-![React](https://img.shields.io/badge/React-2E2E2E?style=flat-square&logo=react&logoColor=FF7043)
-![Next.js](https://img.shields.io/badge/Next.js-2E2E2E?style=flat-square&logo=next.js&logoColor=FF7043)
-![Node.js](https://img.shields.io/badge/Node.js-2E2E2E?style=flat-square&logo=node.js&logoColor=FF7043)
-![Go](https://img.shields.io/badge/Go-2E2E2E?style=flat-square&logo=go&logoColor=FF7043)
-![Python](https://img.shields.io/badge/Python-2E2E2E?style=flat-square&logo=python&logoColor=FF7043)
-![LangChain](https://img.shields.io/badge/LangChain-2E2E2E?style=flat-square&logo=langchain&logoColor=FF7043)
-
-**Familiar**
-
-`Java` · `Dart / Flutter` · `PostgreSQL` · `MongoDB` · `GraphQL` · `Tailwind` ·
-`Docker` · `AWS` · `GitHub Actions` · `Figma`
-
-<br>
-
-## 03 Contribution graph
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-light.svg">
-    <img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/dist/snake-light.svg" alt="Contribution graph" width="100%">
-  </picture>
-</div>
+<!-- guestbook:start -->
+<sub>Nobody yet. You could be first.</sub>
+<!-- guestbook:end -->

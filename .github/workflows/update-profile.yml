@@ -1,6 +1,6 @@
-# Rebuilds the assets README.md points at:
-#   assets/header-{light,dark}.svg   metrics card, built from the GraphQL API
-#   dist/snake-{light,dark}.svg      contribution graph animation
+# Rebuilds the cards README.md points at:
+#   assets/header-{light,dark}.svg   identity, live status, stats
+#   assets/year-{light,dark}.svg     animated contribution calendar
 #
 # Both are committed to the repo and served from raw.githubusercontent.com, so the
 # README never depends on a third-party renderer being up.
@@ -9,14 +9,14 @@ name: Update Profile README
 
 on:
   schedule:
-    # 22:17 UTC. Off-hour slots are less contended than :00, so runs tend to
-    # start closer to their scheduled time.
+    # 22:17 UTC (05:17 WIB). Off-hour slots are less contended than :00, so runs
+    # tend to start closer to their scheduled time.
     - cron: '17 22 * * *'
   push:
     branches: [main]
     # Only re-run when the generator itself changes; asset commits must not retrigger.
     paths:
-      - '.github/scripts/**'
+      - '.github/scripts/generate-header.mjs'
       - '.github/workflows/update-profile.yml'
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ permissions:
   contents: write
 
 jobs:
-  update-readme:
+  update-cards:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -40,8 +40,8 @@ jobs:
           node-version: '20'
 
       # Fails the job instead of writing a placeholder, so an API outage leaves
-      # the previous card in place.
-      - name: Generate header card
+      # the previous cards in place.
+      - name: Generate cards
         env:
           # Swap in a PAT as secrets.METRICS_TOKEN to include private contributions.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,22 +49,19 @@ jobs:
           PROFILE_LOGIN: ${{ github.repository_owner }}
         run: node .github/scripts/generate-header.mjs
 
-      - name: Generate contribution snake
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/snake-light.svg?palette=github-light
-            dist/snake-dark.svg?palette=github-dark
-
-      - name: Commit refreshed assets
+      - name: Commit refreshed cards
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets dist
+          git add assets
           if git diff --cached --quiet; then
-            echo "Assets unchanged, nothing to commit."
-          else
-            git commit -m "chore: refresh profile assets [skip ci]"
-            git push
+            echo "Cards unchanged, nothing to commit."
+            exit 0
           fi
+          git commit -m "chore: refresh profile cards [skip ci]"
+          # A guestbook signature may have pushed in the meantime; it only touches README.md and data/.
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
