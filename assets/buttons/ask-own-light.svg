@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="40" viewBox="0 0 220 40" role="img" aria-label="Ask your own question">
-  <style>text { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI Variable Display','Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif; }</style>
-  <rect x=".5" y=".5" width="219" height="39" rx="19.5" fill="#F4511E" stroke="#F4511E"/>
-  <path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.4 3.4l2.1 2.1M10.5 10.5l2.1 2.1M3.4 12.6l2.1-2.1M10.5 5.5l2.1-2.1" transform="translate(18 12)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="121" y="25" text-anchor="middle" font-size="14" font-weight="600" fill="#FFFFFF">Ask your own question</text>
-</svg>

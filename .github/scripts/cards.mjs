@@ -29,10 +29,6 @@ const IDENTITY = {
 
 // Labels for the call-to-action buttons. README.md links each one.
 export const BUTTONS = {
-  'ask-building': { label: 'What is Alfred building?' },
-  'ask-stack': { label: "What's his stack?" },
-  'ask-hire': { label: 'Is he open to work?' },
-  'ask-own': { label: 'Ask your own question', primary: true, icon: 'spark' },
   paint: { label: 'Paint a pixel', primary: true, icon: 'pixel' },
   sign: { label: 'Sign the guestbook', icon: 'pen' },
 };

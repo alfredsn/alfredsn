@@ -18,17 +18,6 @@ Currently building [alfredsn.com](https://alfredsn.com). Open to collaborating o
 **AI** &nbsp; LangChain · LLM APIs<br>
 **Tooling** &nbsp; Docker · AWS · GitHub Actions · Figma
 
-### Ask my AI
-
-Got a question about my work? An AI answers it in about a minute, using only [what I've written about myself](https://github.com/alfredsn/alfredsn/blob/main/data/about.md). Pick one or ask your own.
-
-<p>
-<a href="https://github.com/alfredsn/alfredsn/issues/new?title=ask%3A+What+is+Alfred+building%3F&body=Press+Create.+An+AI+that+only+knows+Alfred%27s+profile+answers+here+within+a+minute."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-building-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-building-light.svg"><img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-building-light.svg" alt="Ask: What is Alfred building?" height="40"></picture></a>
-<a href="https://github.com/alfredsn/alfredsn/issues/new?title=ask%3A+What%27s+his+stack%3F&body=Press+Create.+An+AI+that+only+knows+Alfred%27s+profile+answers+here+within+a+minute."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-stack-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-stack-light.svg"><img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-stack-light.svg" alt="Ask: What's his stack?" height="40"></picture></a>
-<a href="https://github.com/alfredsn/alfredsn/issues/new?title=ask%3A+Is+he+open+to+work%3F&body=Press+Create.+An+AI+that+only+knows+Alfred%27s+profile+answers+here+within+a+minute."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-hire-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-hire-light.svg"><img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-hire-light.svg" alt="Ask: Is he open to work?" height="40"></picture></a>
-<a href="https://github.com/alfredsn/alfredsn/issues/new?template=ask.yml"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-own-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-own-light.svg"><img src="https://raw.githubusercontent.com/alfredsn/alfredsn/main/assets/buttons/ask-own-light.svg" alt="Ask your own question" height="40"></picture></a>
-</p>
-
 <!-- coding:start -->
 <!-- coding:end -->
 

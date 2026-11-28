@@ -122,7 +122,6 @@ export function button(t, label, { primary = false, icon = '' } = {}) {
 
 // 16×16 line icons, drawn on the same stroke as the buttons.
 const ICONS = {
-  spark: 'M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.4 3.4l2.1 2.1M10.5 10.5l2.1 2.1M3.4 12.6l2.1-2.1M10.5 5.5l2.1-2.1',
   pixel: 'M2 2h5v5H2zM9 9h5v5H9zM9 2h5v5H9z',
   pen: 'M10.5 2.5l3 3L6 13H3v-3zM9 4l3 3',
   arrow: 'M3 8h10M9 4l4 4-4 4',

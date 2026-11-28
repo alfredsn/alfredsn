@@ -1,7 +1,6 @@
 # Everything a visitor can do from the profile starts with an issue (see .github/scripts/interact.mjs):
 #   guestbook: ...   add their avatar to the wall
 #   pixel: ...       paint one cell of the community canvas
-#   ask: ...         get an answer from an AI that only knows data/about.md
 #
 # Visitor text never reaches a shell: titles are only compared in `if:` expressions here,
 # and the script reads the issue from the event payload file.
@@ -25,8 +24,7 @@ jobs:
   handle:
     if: >-
       startsWith(github.event.issue.title, 'guestbook') ||
-      startsWith(github.event.issue.title, 'pixel') ||
-      startsWith(github.event.issue.title, 'ask')
+      startsWith(github.event.issue.title, 'pixel')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,15 +33,9 @@ jobs:
         with:
           node-version: '20'
 
-      # Only questions need the Anthropic SDK.
-      - name: Install dependencies
-        if: startsWith(github.event.issue.title, 'ask')
-        run: npm ci --prefix .github/scripts
-
       - name: Handle the issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node .github/scripts/interact.mjs
 
       - name: Commit and push
